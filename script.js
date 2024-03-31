@@ -30,12 +30,13 @@ var booksAndAuthors = [
     currentBookIndex = booksAndAuthors.indexOf(bookAndAuthor);
   
     var shuffledAuthors = booksAndAuthors.slice(); // Copy array
+    shuffledAuthors.splice(shuffledAuthors.indexOf(bookAndAuthor), 1)
     shuffledAuthors.sort(() => Math.random() - 0.5); // Shuffle options
   
     var authorOptionsData = [];
     authorOptionsData.push({ author: bookAndAuthor.author, isCorrect: true });
   
-    for (var i = 0; i < authorOptions.length; i++) {
+    for (var i = 0; i < authorOptions.length - 1; i++) {
         authorOptionsData.push({ author: shuffledAuthors[i].author, isCorrect: false });
     }
 
@@ -52,32 +53,55 @@ var booksAndAuthors = [
 
   var correctAnswerSelected = false;
 
-  function checkAnswer(clickedElement) {
-    if (!correctAnswerSelected) {
-      var selectedAuthor = clickedElement.textContent;
-      var correctAuthor = booksAndAuthors[currentBookIndex].author;
-  
-      if (selectedAuthor === correctAuthor) {
-        clickedElement.classList.add('correct');
-        correctAnswerSelected = true;
-  
-        // Disable click event on other options
-        var authorOptions = document.querySelectorAll('.author-option');
-        authorOptions.forEach(function(option) {
-          if (!option.classList.contains('correct')) {
-            option.onclick = null;
-          }
-        });
-  
-        // Disable hover effect on other options
-        var styles = document.createElement('style');
-        styles.innerHTML = '.author-option:not(.correct):hover { background-color: #e9e9e9; cursor: default; }';
-        document.head.appendChild(styles);
-      } else {
-        alert('Incorrect!');
-      }
+function checkAnswer(clickedElement) {
+  if (!correctAnswerSelected) {
+    var selectedAuthor = clickedElement.textContent;
+    var correctAuthor = booksAndAuthors[currentBookIndex].author;
+
+    if (selectedAuthor === correctAuthor) {
+      clickedElement.classList.add('correct');
+      correctAnswerSelected = true;
+
+      // Disable click event on other options
+      var authorOptions = document.querySelectorAll('.author-option');
+      authorOptions.forEach(function(option) {
+        if (!option.classList.contains('correct')) {
+          option.onclick = null;
+        }
+      });
+
+      // Disable hover effect on other options
+      var styles = document.createElement('style');
+      styles.innerHTML = '.author-option:not(.correct):hover { background-color: #e9e9e9; cursor: default; }';
+      document.head.appendChild(styles);
+
+      // Enable next button
+      document.getElementById('next-button').disabled = false;
+    } else {
+      alert('Incorrect!');
     }
   }
+}
+
+function nextWord() {
+  correctAnswerSelected = false; // Reset flag
+  // Remove existing styles
+  var existingStyles = document.querySelector('style');
+  if (existingStyles) {
+    existingStyles.remove();
+  }
+  // Enable click events on author options
+  var authorOptions = document.querySelectorAll('.author-option');
+  authorOptions.forEach(function(option) {
+    option.onclick = function() {
+      checkAnswer(this);
+    };
+  });
+  // Reset author options
+  displayBookAndAuthors();
+  // Disable next button again
+  document.getElementById('next-button').disabled = true;
+}
   
   
   // Initial display when the page loads
