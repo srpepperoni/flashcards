@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Selection</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="container">
+    <div id="book-card">
+      <h2 id="book-title">Book Title</h2>
+      <div id="author-options">
+        <div class="author-option" onclick="checkAnswer(this)"></div>
+        <div class="author-option" onclick="checkAnswer(this)"></div>
+        <div class="author-option" onclick="checkAnswer(this)"></div>
+        <div class="author-option" onclick="checkAnswer(this)"></div>
+      </div>
+    </div>
+    <button id="next-button" onclick="nextWord()" disabled>Next Word</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
