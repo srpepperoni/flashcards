@@ -1,109 +1,124 @@
-var booksAndAuthors = [
-    { book: "Book 1", author: "Author 1" },
-    { book: "Book 2", author: "Author 2" },
-    { book: "Book 3", author: "Author 3" },
-    { book: "Book 4", author: "Author 4" },
-    { book: "Book 5", author: "Author 5" },
-    { book: "Book 6", author: "Author 6" },
-    { book: "Book 7", author: "Author 7" },
-    { book: "Book 8", author: "Author 8" },
-    { book: "Book 9", author: "Author 9" },
-    { book: "Book 10", author: "Author 10" },
-    { book: "Book 11", author: "Author 11" },
-    { book: "Book 12", author: "Author 12" },
-    { book: "Book 13", author: "Author 13" }
-    // Add more books and authors as needed
-  ];
-  
-  var currentBookIndex;
-  
-  function getRandomBook() {
-    return booksAndAuthors[Math.floor(Math.random() * booksAndAuthors.length)];
+var chaptersAndAuthors = [
+  {
+    chapter: 1,
+    title: "Title 1",
+    authors: [
+      { name: "Author One", concept: "Concept Author One" },
+      { name: "Author Two", concept: "Concept Author Two" },
+      { name: "Author Three", concept: "Concept Author Three" },
+      { name: "Author Four", concept: "Concept Author Four" },
+      { name: "Author Five", concept: "Concept Author Five" },
+      { name: "Author Six", concept: "Concept Author Six" },
+      { name: "Author Seven", concept: "Concept Author Seven" }
+    ]
+  },
+  {
+    chapter: 2,
+    title: "Title 2",
+    authors: [
+      { name: "Author Eight", concept: "Concept Author Eight" },
+      { name: "Author Nine", concept: "Concept Author Nine" },
+      { name: "Author Ten", concept: "Concept Author Ten" },
+      { name: "Author Eleven", concept: "Concept Author Eleven" },
+      { name: "Author Twelve", concept: "Concept Author Twelve" },
+      { name: "Author Threeteen", concept: "Concept Author Threeteen" },
+      { name: "Author Fourteen", concept: "Concept Author Fourteen" }
+    ]
+  },
+  {
+    chapter: 3,
+    title: "Title 3",
+    authors: [
+      { name: "Author One", concept: "Concept Author One" },
+      { name: "Author Two", concept: "Concept Author Two" },
+      { name: "Author Three", concept: "Concept Author Three" },
+      { name: "Author Four", concept: "Concept Author Four" },
+      { name: "Author Nine", concept: "Concept Author Nine" },
+      { name: "Author Ten", concept: "Concept Author Ten" },
+      { name: "Author Eleven", concept: "Concept Author Eleven" },
+      { name: "Author Twelve", concept: "Concept Author Twelve" }
+    ]
+  },
+  {
+    chapter: 4,
+    title: "Title 4",
+    authors: [
+      { name: "Author Ten", concept: "Concept Author Ten" },
+      { name: "Author Eleven", concept: "Concept Author Eleven" },
+      { name: "Author Twelve", concept: "Concept Author Twelve" },
+      { name: "Author Four", concept: "Concept Author Four" },
+      { name: "Author Five", concept: "Concept Author Five" },
+      { name: "Author Six", concept: "Concept Author Six" },
+      { name: "Author Seven", concept: "Concept Author Seven" }
+    ]
   }
+];
 
-  function displayBookAndAuthors() {
-    var bookAndAuthor = getRandomBook();
-    var bookTitleElement = document.getElementById('book-title');
-    var authorOptions = document.querySelectorAll('.author-option');
-  
-    bookTitleElement.textContent = bookAndAuthor.book;
-    currentBookIndex = booksAndAuthors.indexOf(bookAndAuthor);
-  
-    var shuffledAuthors = booksAndAuthors.slice(); // Copy array
-    shuffledAuthors.splice(shuffledAuthors.indexOf(bookAndAuthor), 1)
-    shuffledAuthors.sort(() => Math.random() - 0.5); // Shuffle options
-  
-    var authorOptionsData = [];
-    authorOptionsData.push({ author: bookAndAuthor.author, isCorrect: true });
-  
-    for (var i = 0; i < authorOptions.length - 1; i++) {
-        authorOptionsData.push({ author: shuffledAuthors[i].author, isCorrect: false });
-    }
+var currentChapterIndex;
+var correctAuthors;
 
-    authorOptionsData.sort(() => Math.random() - 0.5); // Shuffle options
-  
-    // Display author options
-    for (var j = 0; j < authorOptions.length; j++) {
-      authorOptions[j].textContent = authorOptionsData[j].author;
-      authorOptions[j].classList.remove('correct');
-    }
-  
-    return authorOptionsData;
-  }
-
-  var correctAnswerSelected = false;
-
-function checkAnswer(clickedElement) {
-  if (!correctAnswerSelected) {
-    var selectedAuthor = clickedElement.textContent;
-    var correctAuthor = booksAndAuthors[currentBookIndex].author;
-
-    if (selectedAuthor === correctAuthor) {
-      clickedElement.classList.add('correct');
-      correctAnswerSelected = true;
-
-      // Disable click event on other options
-      var authorOptions = document.querySelectorAll('.author-option');
-      authorOptions.forEach(function(option) {
-        if (!option.classList.contains('correct')) {
-          option.onclick = null;
-        }
-      });
-
-      // Disable hover effect on other options
-      var styles = document.createElement('style');
-      styles.innerHTML = '.author-option:not(.correct):hover { background-color: #e9e9e9; cursor: default; }';
-      document.head.appendChild(styles);
-
-      // Enable next button
-      document.getElementById('next-button').disabled = false;
-    } else {
-      alert('Incorrect!');
-    }
-  }
+function getRandomChapter() {
+  return chaptersAndAuthors[Math.floor(Math.random() * chaptersAndAuthors.length)];
 }
 
-function nextWord() {
-  correctAnswerSelected = false; // Reset flag
-  // Remove existing styles
-  var existingStyles = document.querySelector('style');
-  if (existingStyles) {
-    existingStyles.remove();
-  }
-  // Enable click events on author options
+function getAllUniqueAuthors(chaptersAndAuthors) {
+  return chaptersAndAuthors.reduce((uniqueAuthors, chapter) => {
+    chapter.authors.forEach(author => {
+      if (!uniqueAuthors.includes(author.name)) {
+        uniqueAuthors.push(author.name);
+      }
+    });
+    return uniqueAuthors;
+  }, []);
+}
+
+function displayChapterAndAuthors() {
+  var chapterData = getRandomChapter();
+  var chapterTitleElement = document.getElementById('chapter-title');
   var authorOptions = document.querySelectorAll('.author-option');
-  authorOptions.forEach(function(option) {
-    option.onclick = function() {
-      checkAnswer(this);
-    };
-  });
-  // Reset author options
-  displayBookAndAuthors();
-  // Disable next button again
-  document.getElementById('next-button').disabled = true;
+
+  chapterTitleElement.textContent = "Chapter " + chapterData.chapter + ": " + chapterData.title;
+  currentChapterIndex = chaptersAndAuthors.indexOf(chapterData);
+
+  correctAuthors = chapterData.authors.map(author => author.name); // Store correct authors for validation
+
+  // Extract unique author names
+  var uniqueAuthors = getAllUniqueAuthors(chaptersAndAuthors);
+
+  // Fill author options with unique authors and shuffle
+  var shuffledAuthors = uniqueAuthors.slice(); // Copy array
+  shuffledAuthors.sort(() => Math.random() - 0.5); // Shuffle options
+
+  for (var i = 0; i < authorOptions.length; i++) {
+    authorOptions[i].textContent = shuffledAuthors[i];
+    authorOptions[i].classList.remove('selected', 'correct', 'incorrect');
+  }
 }
-  
-  
-  // Initial display when the page loads
-  displayBookAndAuthors();
-  
+
+function toggleSelection(clickedElement) {
+  clickedElement.classList.toggle('selected');
+}
+
+function validateOptions() {
+  var selectedOptions = document.querySelectorAll('.author-option.selected');
+  selectedOptions.forEach(option => {
+    if (correctAuthors.includes(option.textContent)) {
+      option.classList.add('correct');
+    } else {
+      option.classList.add('incorrect');
+    }
+  });
+}
+
+function toggleTheme() {
+  var themeToggle = document.getElementById('theme-toggle');
+  //var container = document.getElementById('container');
+  document.body.classList.toggle('dark-theme', themeToggle.checked);
+  //container.classList.toggle('dark-theme', themeToggle.checked);
+}
+
+
+
+
+// Initial display when the page loads
+displayChapterAndAuthors();

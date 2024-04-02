@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Selection</title>
+  <title>Chapter Selection</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
   <div id="container">
-    <div id="book-card">
-      <h2 id="book-title">Book Title</h2>
-      <div id="author-options">
-        <div class="author-option" onclick="checkAnswer(this)"></div>
-        <div class="author-option" onclick="checkAnswer(this)"></div>
-        <div class="author-option" onclick="checkAnswer(this)"></div>
-        <div class="author-option" onclick="checkAnswer(this)"></div>
-      </div>
+    <div id="theme-switch">
+      <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+      <label for="theme-toggle"></label>
     </div>
-    <button id="next-button" onclick="nextWord()" disabled>Next</button>
+    <div id="chapter-card">
+      <h2 id="chapter-title">Chapter Title</h2>
+      <div id="author-options">
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+        <div class="author-option" onclick="toggleSelection(this)"></div>
+      </div>
+      <button id="validate-button" onclick="validateOptions()">Validate Options</button>
+      <button id="next-chapter-button" onclick="displayChapterAndAuthors()">Next Chapter</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
