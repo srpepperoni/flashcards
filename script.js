@@ -100,12 +100,14 @@ function toggleSelection(clickedElement) {
 }
 
 function validateOptions() {
-  var selectedOptions = document.querySelectorAll('.author-option.selected');
-  selectedOptions.forEach(option => {
+  var options = document.querySelectorAll('.author-option');
+  options.forEach(option => {
     if (correctAuthors.includes(option.textContent)) {
       option.classList.add('correct');
     } else {
-      option.classList.add('incorrect');
+      if (option.classList.contains('selected')) {
+        option.classList.add('incorrect');
+      }
     }
   });
 }

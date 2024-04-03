@@ -10,6 +10,22 @@ body {
   transition: background-color 0.3s ease;
 }
 
+body.dark-theme {
+  background-color: #333;
+  color: #fff; /* Default text color in dark mode */
+
+  /* Additional styles for specific elements */
+  #chapter-card {
+    color: #000; /* Change text color of the chapter card */
+  }
+
+  /* Set text color of chapter title */
+  #chapter-title {
+    color: #ffffff; /* Change text color of the chapter title */
+  }
+}
+
+
 #container {
   text-align: center;
   margin-bottom: 20px; /* Add space between card and button */
@@ -42,15 +58,15 @@ body {
 }
 
 .author-option.selected {
-  background-color: #ccc;
+  background-color: #FFA500  ;
 }
 
 .author-option.correct {
-  background-color: #8bc34a;
+  background-color: #4CAF50 ;
 }
 
 .author-option.incorrect {
-  background-color: #f44336;
+  background-color: #dc3545 ;
 }
 
 #validate-button {
