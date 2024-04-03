@@ -3,32 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter Selection</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Select Menu</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file -->
 </head>
 <body>
-  <div id="container">
-    <div id="theme-switch">
-      <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
-      <label for="theme-toggle"></label>
+  <div class="menu-container">
+    <div class="menu-row">
+      <label for="chapter-select">Select Chapters:</label>
+      <select id="chapter-select" multiple></select>
     </div>
-    <div id="chapter-card">
-      <h2 id="chapter-title">Chapter Title</h2>
-      <div id="author-options">
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-        <div class="author-option"></div>
-      </div>
-      <button id="validate-button" onclick="validateOptions()">Validate Options</button>
-      <button id="next-chapter-button" onclick="displayChapterAndAuthors()">Next Chapter</button>
+
+    <div class="menu-row">
+      <label for="num-authors">Number of Authors:</label>
+      <select id="num-authors">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+    </div>
+
+    <div class="menu-row">
+      <label for="num-correct">Number of Correct Options:</label>
+      <select id="num-correct">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
+
+    <div class="menu-row">
+      <button onclick="startQuiz()">Go to Chapter & Authors</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script type="text/javascript" src="data.js"></script> 
+  <script type="text/javascript" src="script-menu.js"></script>
 </body>
 </html>
