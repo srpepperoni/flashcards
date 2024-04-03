@@ -56,6 +56,8 @@ var chaptersAndAuthors = [
 
 var currentChapterIndex;
 var correctAuthors;
+var authorOptions = document.getElementById('author-options');
+var optionsEnabled = true;
 
 function getRandomChapter() {
   return chaptersAndAuthors[Math.floor(Math.random() * chaptersAndAuthors.length)];
@@ -80,24 +82,26 @@ function displayChapterAndAuthors() {
   chapterTitleElement.textContent = "Chapter " + chapterData.chapter + ": " + chapterData.title;
   currentChapterIndex = chaptersAndAuthors.indexOf(chapterData);
 
-  correctAuthors = chapterData.authors.map(author => author.name); // Store correct authors for validation
+  correctAuthors = chapterData.authors.map(author => author.name);
 
-  // Extract unique author names
   var uniqueAuthors = getAllUniqueAuthors(chaptersAndAuthors);
 
-  // Fill author options with unique authors and shuffle
-  var shuffledAuthors = uniqueAuthors.slice(); // Copy array
-  shuffledAuthors.sort(() => Math.random() - 0.5); // Shuffle options
+  var shuffledAuthors = uniqueAuthors.slice();
+  shuffledAuthors.sort(() => Math.random() - 0.5);
 
   for (var i = 0; i < authorOptions.length; i++) {
     authorOptions[i].textContent = shuffledAuthors[i];
     authorOptions[i].classList.remove('selected', 'correct', 'incorrect');
   }
+
+  disableNextButton();
 }
 
-function toggleSelection(clickedElement) {
-  clickedElement.classList.toggle('selected');
-}
+authorOptions.addEventListener('click', function(event) {
+  if (event.target.classList.contains('author-option') && optionsEnabled) {
+    event.target.classList.toggle('selected');
+  }
+});
 
 function validateOptions() {
   var options = document.querySelectorAll('.author-option');
@@ -110,17 +114,26 @@ function validateOptions() {
       }
     }
   });
+
+  enableNextButton();
 }
 
 function toggleTheme() {
   var themeToggle = document.getElementById('theme-toggle');
-  //var container = document.getElementById('container');
   document.body.classList.toggle('dark-theme', themeToggle.checked);
-  //container.classList.toggle('dark-theme', themeToggle.checked);
 }
 
+function disableNextButton() {
+  var nextButton = document.getElementById('next-chapter-button');
+  nextButton.disabled = true;
+  optionsEnabled = true;
+}
 
-
+function enableNextButton() {
+  var nextButton = document.getElementById('next-chapter-button');
+  nextButton.disabled = false;
+  optionsEnabled = false;
+}
 
 // Initial display when the page loads
 displayChapterAndAuthors();
