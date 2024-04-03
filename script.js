@@ -23,6 +23,11 @@ function getNumberOfAuthorsFromURI() {
   return queryParams.get('numAuthors');
 }
 
+function getNumberOfCorrectAnswersFromURI() {
+  const queryParams = new URLSearchParams(window.location.search);
+  return queryParams.get('numCorrect');
+}
+
 function removeAllChildElements(parentElement) {
   while (parentElement.firstChild) {
     parentElement.removeChild(parentElement.firstChild);
@@ -43,7 +48,7 @@ function generateAuthorOption() {
 
 function displayChapterAndAuthors() {
   generateAuthorOption()
-
+  var numCorrectAnswers = getNumberOfCorrectAnswersFromURI()
 
   var chapterData = getRandomChapter();
   var chapterTitleElement = document.getElementById('chapter-title');
@@ -53,14 +58,22 @@ function displayChapterAndAuthors() {
   currentChapterIndex = chaptersAndAuthors.indexOf(chapterData);
 
   correctAuthors = chapterData.authors.map(author => author.name);
+  correctAuthors.sort(() => Math.random() - 0.5);
+  var correctAuthorsToShow = correctAuthors.slice(0, numCorrectAnswers);
 
   var uniqueAuthors = getAllUniqueAuthors(chaptersAndAuthors);
 
-  var shuffledAuthors = uniqueAuthors.slice();
-  shuffledAuthors.sort(() => Math.random() - 0.5);
+  var remainingAuthors = uniqueAuthors.filter(author => !correctAuthors.includes(author));
+  var shuffledRemainingAuthors = remainingAuthors.slice();
+  shuffledRemainingAuthors.sort(() => Math.random() - 0.5);
+  shuffledRemainingAuthors = shuffledRemainingAuthors.slice(0, (authorOptions.length - numCorrectAnswers))
+
+  var finalAuthors = correctAuthorsToShow.concat(shuffledRemainingAuthors)
+
+  finalAuthors.sort(() => Math.random() - 0.5);
 
   for (var i = 0; i < authorOptions.length; i++) {
-    authorOptions[i].textContent = shuffledAuthors[i];
+    authorOptions[i].textContent = finalAuthors[i];
     authorOptions[i].classList.remove('selected', 'correct', 'incorrect');
   }
 
