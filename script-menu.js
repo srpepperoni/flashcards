@@ -47,3 +47,29 @@ updateCorrectAnswersOptions();
 
 // Listen for changes in the number of authors dropdown and update options accordingly
 document.getElementById('num-authors').addEventListener('change', updateCorrectAnswersOptions);
+
+function toggleTheme() {
+  const body = document.body;
+  const isDarkMode = body.classList.contains('dark-theme');
+
+  if (isDarkMode) {
+    body.classList.remove('dark-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    body.classList.add('dark-theme');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+function applyTheme() {
+  const theme = localStorage.getItem('theme');
+  const body = document.body;
+
+  if (theme === 'dark') {
+    body.classList.add('dark-theme');
+  } else {
+    body.classList.remove('dark-theme');
+  }
+}
+
+applyTheme();
