@@ -1,12 +1,8 @@
 # flashcards
-Dynamic flascards for memorize work
+Dynamic flashcards for memorizing
 
 ## TODO
 
-[] (WIP) Number of options functionality
-
-[] Number of correct options functionality
-
-[] Keep dark mode by localstorage or similar
-
-[] Multiselect chapters functionality
+- [ ] Number of correct options functionality
+- [ ] Keep dark mode by localstorage or similar
+- [ ] Multiselect chapters functionality
