@@ -18,3 +18,8 @@ chaptersAndAuthors.forEach(chapter => {
   option.textContent = `Chapter ${chapter.chapter}: ${chapter.title}`;
   chapterSelect.appendChild(option);
 });
+
+function toggleTheme() {
+  var themeToggle = document.getElementById('theme-toggle');
+  document.body.classList.toggle('dark-theme', themeToggle.checked);
+}

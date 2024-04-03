@@ -8,9 +8,15 @@
 </head>
 <body>
   <div class="menu-container">
+    <div id="theme-switch">
+      <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+      <label for="theme-toggle"></label>
+    </div>
     <div class="menu-row">
       <label for="chapter-select">Select Chapters:</label>
-      <select id="chapter-select" multiple></select>
+      <select id="chapter-select" multiple>
+        <option value="0">All</option>
+      </select>
     </div>
 
     <div class="menu-row">

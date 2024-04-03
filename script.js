@@ -18,7 +18,33 @@ function getAllUniqueAuthors(chaptersAndAuthors) {
   }, []);
 }
 
+function getNumberOfAuthorsFromURI() {
+  const queryParams = new URLSearchParams(window.location.search);
+  return queryParams.get('numAuthors');
+}
+
+function removeAllChildElements(parentElement) {
+  while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+  }
+}
+
+function generateAuthorOption() {
+  var numberOfOptions = getNumberOfAuthorsFromURI()
+  const authorOptions = document.getElementById('author-options');
+  removeAllChildElements(authorOptions);
+
+  for (i=0;i<numberOfOptions;i++){
+    const option = document.createElement('div');
+    option.classList.add('author-option')
+    authorOptions.appendChild(option);
+  }
+}
+
 function displayChapterAndAuthors() {
+  generateAuthorOption()
+
+
   var chapterData = getRandomChapter();
   var chapterTitleElement = document.getElementById('chapter-title');
   var authorOptions = document.querySelectorAll('.author-option');
@@ -60,6 +86,10 @@ function validateOptions() {
   });
 
   enableNextButton();
+}
+
+function backToMenu() {
+  window.location.href = `index.html`;
 }
 
 function toggleTheme() {
