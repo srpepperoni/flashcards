@@ -2,10 +2,20 @@
 var correctAuthors;
 var authorOptions = document.getElementById('author-options');
 var optionsEnabled = true;
+var numCorrectAnswers = getNumberOfCorrectAnswersFromURI();
 
+// Reads click events on authors divs and mark as yellow (selected)
 authorOptions.addEventListener('click', function(event) {
+    const optionsSelected = authorOptions.getElementsByClassName('selected').length;
+
     if (event.target.classList.contains('author-option') && optionsEnabled) {
-      event.target.classList.toggle('selected');
+        if (optionsSelected < numCorrectAnswers) {
+           event.target.classList.toggle('selected');
+        } else {
+            if (event.target.classList.contains('selected')) {
+                event.target.classList.toggle('selected');
+            }
+        }
     }
 });
 
@@ -76,6 +86,7 @@ function removeAllChildElements(parentElement) {
 function generateAuthorOption() {
     var numberOfOptions = getNumberOfAuthorsFromURI()
     const authorOptions = document.getElementById('author-options');
+    // Clean html elements before to refill with new options
     removeAllChildElements(authorOptions);
 
     for (i=0;i<numberOfOptions;i++){

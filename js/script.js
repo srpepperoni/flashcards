@@ -1,21 +1,35 @@
 // main.js
+let questionCounter = 1;
+let wrongAnswers = 0;
 
 function validateOptions() {
-  var options = document.querySelectorAll('.author-option');
-  options.forEach(option => {
-    if (correctAuthors.includes(option.textContent)) {
-      option.classList.add('correct');
-    } else {
-      if (option.classList.contains('selected')) {
-        option.classList.add('incorrect');
-      }
-    }
-  });
+  const optionsSelected = authorOptions.getElementsByClassName('selected').length;
 
-  enableNextButton();
+  if (optionsSelected == numCorrectAnswers) {
+    var options = document.querySelectorAll('.author-option');
+    var mistakes = 0;
+
+    options.forEach(option => {
+      if (correctAuthors.includes(option.textContent)) {
+        option.classList.add('correct');
+      } else {
+        if (option.classList.contains('selected')) {
+          option.classList.add('incorrect');
+          mistakes++;
+        }
+      }
+    });
+
+    if (mistakes > 0) {
+      wrongAnswers++;
+    }
+
+    enableNextButton();
+  }
 }
 
 function backToMenu() {
+  questionCounter = 1;
   window.location.href = `../index.html`;
 }
 
@@ -43,10 +57,25 @@ function applyTheme() {
   }
 }
 
+document.getElementById('next-chapter-button').addEventListener('click', () => {
+  questionCounter++;
+  updateCounter();
+});
+
+function updateCounter() {
+  const counterElement = document.getElementById('counter');
+  counterElement.textContent = `Questions made: ${questionCounter}`;
+}
+
 function displayChapterAndAuthors() {
+
+  if (questionCounter > 9) {
+    alert("You made " + wrongAnswers + " wrong answers");
+    backToMenu();
+  }
+
   generateAuthorOption()
 
-  var numCorrectAnswers = getNumberOfCorrectAnswersFromURI()
   var chapterData = getRandomChapter();
   var chapterTitleElement = document.getElementById('chapter-title');
   var authorOptions = document.querySelectorAll('.author-option');
