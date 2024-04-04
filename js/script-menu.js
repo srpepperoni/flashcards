@@ -1,11 +1,20 @@
 // Initial display when the page loads
 // Function to start the quiz
 function startQuiz() {
-    var selectedChapter = document.getElementById('chapter-select').value;
     var numAuthors = parseInt(document.getElementById('num-authors').value);
     var numCorrectOptions = parseInt(document.getElementById('num-correct').value);
+
+    const selectElement = document.getElementById('chapter-select');
+    const selectedChapters = [];
+
+    for (let i = 0; i < selectElement.options.length; i++) {
+      const option = selectElement.options[i];
+      if (option.selected) {
+        selectedChapters.push(option.value);
+      }
+    }
   
-    window.location.href = `chapter-authors.html?chapter=${selectedChapter}&numAuthors=${numAuthors}&numCorrect=${numCorrectOptions}`;
+    window.location.href = `html/chapter-authors.html?chapters=${selectedChapters}&numAuthors=${numAuthors}&numCorrect=${numCorrectOptions}`;
 }
 
 // Get reference to the select element
