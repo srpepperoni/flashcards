@@ -51,5 +51,18 @@ var chaptersAndAuthors = [
         { name: "Author Six", concept: "Concept Author Six" },
         { name: "Author Seven", concept: "Concept Author Seven" }
       ]
+    },
+    {
+      chapter: 18,
+      title: "Title 18",
+      authors: [
+        { name: "Generelo y Lapetra", concept: "Definición habilidades" },
+        { name: "Sánchez Bañuelos y Carmen Trigueros", concept: "Clasificación habilidades" },
+        { name: "Fitts y Posner", concept: "Modelo" },
+        { name: "Arturo Abrales", concept: "Clasificación principios entrenamiento" },
+        { name: "Moreno y Ordoño", concept: "Síndrome general de adaptación" },
+        { name: "Sánchez Bañuelos y Díaz Lucea", concept: "Mejora habilidades" },
+        { name: "Author Seven", concept: "Concept Author Seven" }
+      ]
     }
   ];
