@@ -53,6 +53,22 @@ var chaptersAndAuthors = [
       ]
     },
     {
+      chapter: 13,
+      title: "13, El juego",
+      authors: [
+        { name: "Huizinga", concept: "Concepto" },
+        { name: "Caillois", concept: "Tipos juego" },
+        { name: "Gallardo y Fernández citando a Huizinga", concept: "Concepto" },
+        { name: "Delgado (2011)", concept: "Concepto" },
+        { name: "Garcia López y Ruiz Omeñaca", concept: "Teorias del juego" },
+        { name: "Fernando Maestro", concept: "Clasificación" },
+        { name: "Parlebas (2000)", concept: "Clasificación juego y deporte" },
+        { name: "Lavega (2003)", concept: "Adaptaciones metodológicas alum y prof" },
+        { name: "Antón, Cárdenas y Serra", concept: "adaptaciones metodológicas juego" },
+        { name: "Batalla, Generelo y Díaz Lucea", concept: "adaptaciones metodológicas juego" }
+      ]
+    },
+    {
       chapter: 18,
       title: "Title 18",
       authors: [
@@ -61,8 +77,7 @@ var chaptersAndAuthors = [
         { name: "Fitts y Posner", concept: "Modelo" },
         { name: "Arturo Abrales", concept: "Clasificación principios entrenamiento" },
         { name: "Moreno y Ordoño", concept: "Síndrome general de adaptación" },
-        { name: "Sánchez Bañuelos y Díaz Lucea", concept: "Mejora habilidades" },
-        { name: "Author Seven", concept: "Concept Author Seven" }
+        { name: "Sánchez Bañuelos y Díaz Lucea", concept: "Mejora habilidades" }
       ]
     }
   ];
