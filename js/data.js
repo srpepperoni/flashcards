@@ -53,6 +53,21 @@ var chaptersAndAuthors = [
       ]
     },
     {
+      chapter: 7,
+      title: "7 Coordinación y equilibrio",
+      authors: [
+        { name: "Rigal (2006)", concept: "Concepto Coordinación" },
+        { name: "Castañer y Camerino", concept: "Capacidades" },
+        { name: "Torres (2005)", concept: "Concepto coordinación" },
+        { name: "Rivadeneyra (2003)", concept: "Concepto coordinación" },
+        { name: "Torres (2005)", concept: "Clasificación" },
+        { name: "Le Boulch", concept: "Clasificación" },
+        { name: "Zagalaz, Cachón y Lara", concept: "Tratamiento didáctico" },
+        { name: "M. Mosston", concept: "Concepto Equilibrio" },
+        { name: "Bueno, Del Valle y De la Vega", concept: "Tratamiento didáctico" }
+      ]
+    },
+    {
       chapter: 13,
       title: "13, El juego",
       authors: [
