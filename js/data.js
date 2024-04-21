@@ -1,55 +1,29 @@
 var chaptersAndAuthors = [
     {
-      chapter: 1,
-      title: "Title 1",
-      authors: [
-        { name: "Author One", concept: "Concept Author One" },
-        { name: "Author Two", concept: "Concept Author Two" },
-        { name: "Author Three", concept: "Concept Author Three" },
-        { name: "Author Four", concept: "Concept Author Four" },
-        { name: "Author Five", concept: "Concept Author Five" },
-        { name: "Author Six", concept: "Concept Author Six" },
-        { name: "Author Seven", concept: "Concept Author Seven" }
-      ]
-    },
-    {
-      chapter: 2,
-      title: "Title 2",
-      authors: [
-        { name: "Author Eight", concept: "Concept Author Eight" },
-        { name: "Author Nine", concept: "Concept Author Nine" },
-        { name: "Author Ten", concept: "Concept Author Ten" },
-        { name: "Author Eleven", concept: "Concept Author Eleven" },
-        { name: "Author Twelve", concept: "Concept Author Twelve" },
-        { name: "Author Threeteen", concept: "Concept Author Threeteen" },
-        { name: "Author Fourteen", concept: "Concept Author Fourteen" }
-      ]
-    },
-    {
       chapter: 3,
-      title: "Title 3",
+      title: "3, Anatomia y fisiologia",
       authors: [
-        { name: "Author One", concept: "Concept Author One" },
-        { name: "Author Two", concept: "Concept Author Two" },
-        { name: "Author Three", concept: "Concept Author Three" },
-        { name: "Author Four", concept: "Concept Author Four" },
-        { name: "Author Nine", concept: "Concept Author Nine" },
-        { name: "Author Ten", concept: "Concept Author Ten" },
-        { name: "Author Eleven", concept: "Concept Author Eleven" },
-        { name: "Author Twelve", concept: "Concept Author Twelve" }
+        { name: "Lara (2008)", concept: "Concepto Anatomía" },
+        { name: "Calderón (2012)", concept: "Concepto Anatomía" },
+        { name: "Cordova (2013)", concept: "Concepto fisiología" },
+        { name: "Gutierrez (2015)", concept: "Concepto fisiología" },
+        { name: "Bailus y Pedret (2013)", concept: "Lesiones habituales" }
       ]
     },
     {
-      chapter: 4,
-      title: "Title 4",
+      chapter: 5,
+      title: "5, Salud",
       authors: [
-        { name: "Author Ten", concept: "Concept Author Ten" },
-        { name: "Author Eleven", concept: "Concept Author Eleven" },
-        { name: "Author Twelve", concept: "Concept Author Twelve" },
-        { name: "Author Four", concept: "Concept Author Four" },
-        { name: "Author Five", concept: "Concept Author Five" },
-        { name: "Author Six", concept: "Concept Author Six" },
-        { name: "Author Seven", concept: "Concept Author Seven" }
+        { name: "Generelo, Julián y Zaragoza", concept: "Concepto salud" },
+        { name: "Zagalaz, Cachón y Lara (2014)", concept: "Definición calidad de vida" },
+        { name: "Parlebas y Larraz", concept: "Precedentes praxiología motriz" },
+        { name: "Salvador (2016)", concept: "Educación para la salud" },
+        { name: "Mendoza, Segrero y Batista", concept: "Escuela para atender a la salud" },
+        { name: "Estudio Sportis (2015)", concept: "Porcentaje de hábitos" },
+        { name: "Julián, Peirot-Velert, Zaragoza, Aimar-Solana", concept: "EFPS" },
+        { name: "Martín Pinos", concept: "Salud mental" },
+        { name: "Kant", concept: "Definición autoestima" },
+        { name: "Dency y Ryan (2000)", concept: "Teoría de la autodeterminación" }
       ]
     },
     {
@@ -84,8 +58,26 @@ var chaptersAndAuthors = [
       ]
     },
     {
+      chapter: 14,
+      title: "14, El deporte",
+      authors: [
+        { name: "Parlebas (2000)", concept: "Clasificación juego y deporte | Definición deporte"},
+        { name: "Gómez Mora", concept: "Definición deporte" },
+        { name: "Durand", concept: "Clasificación" },
+        { name: "Almond, Bunker, Read y Thorpe", concept: "Clasificación" },
+        { name: "Devis y Read", concept: "Clasificación" },
+        { name: "Blázquez", concept: "Clasificación" },
+        { name: "Galera, Le Boulch, Hernández", concept: "Características" },
+        { name: "Cagigal", concept: "Posibilidades educativas" },
+        { name: "Hernández Álvarez", concept: "Iniciación deportiva" },
+        { name: "Hernández (2000)", concept: "Definición técnica y táctica" },
+        { name: "Anton, Cárdenas y Serra", concept: "Adaptaciones metodológicas" },
+        { name: "Batalla, Generelo y Díaz Lucea", concept: "Adaptaciones metodológicas" }
+      ]
+    },
+    {
       chapter: 18,
-      title: "Title 18",
+      title: "18, Entrenamiento",
       authors: [
         { name: "Generelo y Lapetra", concept: "Definición habilidades" },
         { name: "Sánchez Bañuelos y Carmen Trigueros", concept: "Clasificación habilidades" },
